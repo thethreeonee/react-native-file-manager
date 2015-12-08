@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/MiincGu/react-native-file-manager/issues"
   },
-  "homepage": "https://github.com/MiincGu/react-native-file-manager#readme"
+  "homepage": "https://github.com/MiincGu/react-native-file-manager#readme",
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "bluebird": "^2.9.25",
+    "utf8": "^2.1.1"
+  },
 }
