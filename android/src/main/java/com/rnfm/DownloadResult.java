@@ -1,4 +1,4 @@
-package com.rnfs;
+package com.rnfm;
 
 public class DownloadResult {
   public int statusCode;

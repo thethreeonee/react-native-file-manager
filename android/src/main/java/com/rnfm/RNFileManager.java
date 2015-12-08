@@ -1,4 +1,4 @@
-package com.rnfs;
+package com.rnfm;
 
 import java.util.List;
 import java.util.Map;
