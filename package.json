@@ -1,0 +1,22 @@
+{
+  "name": "react-native-file-manager",
+  "version": "1.0.0",
+  "description": "A file manger for react native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://MiincGu@github.com/MiincGu/react-native-file-manager.git"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "MiincGu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiincGu/react-native-file-manager/issues"
+  },
+  "homepage": "https://github.com/MiincGu/react-native-file-manager#readme"
+}
