@@ -7,7 +7,7 @@ if (typeof self === 'undefined') {
   global.self = global;
 }
 
-var RNFSManager = require('react-native').NativeModules.RNFSManager;
+var RNFSManager = require('react-native').NativeModules.RNFileManager;
 var NativeAppEventEmitter = require('react-native').NativeAppEventEmitter;  // iOS
 var DeviceEventEmitter = require('react-native').DeviceEventEmitter;        // Android
 var Promise = require('bluebird');
