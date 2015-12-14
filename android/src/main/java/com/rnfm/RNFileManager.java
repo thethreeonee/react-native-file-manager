@@ -45,7 +45,7 @@ public class RNFileManager extends ReactContextBaseJavaModule {
   
   private SparseArray<Downloader> downloaders = new SparseArray<Downloader>();
 
-  public RNFSManager(ReactApplicationContext reactContext) {
+  public RNFileManager(ReactApplicationContext reactContext) {
     super(reactContext);
   }
 
