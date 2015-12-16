@@ -1,3 +1,5 @@
+Change name from react-native-fs for personal use. Use on your own risk.
+
 ## react-native-file-manager
 
 Native file system manager for react-native
