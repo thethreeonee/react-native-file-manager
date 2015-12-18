@@ -224,6 +224,16 @@ RCT_EXPORT_METHOD(rename:(NSString *)filepath
     callback(@[[NSNull null], [NSNumber numberWithBool:success]]);
 }
 
+RCT_EXPORT_METHOD(moveFile:(NSString *)filepath
+                  to:(NSString *)newPath
+                  callback:(RCTResponseSenderBlock)callback)
+{
+    NSError *error = nil;
+    BOOL success = [[NSFileManager defaultManager] moveItemAtPath:filepath toPath:newPath error:&error];
+    
+    callback(@[[NSNull null], [NSNumber numberWithBool:success]]);
+}
+
 RCT_EXPORT_METHOD(pathForBundle:(NSString *)bundleNamed
                   callback:(RCTResponseSenderBlock)callback)
 {

@@ -24,6 +24,7 @@ var _downloadFile = Promise.promisify(RNFSManager.downloadFile);
 var _pathForBundle = Promise.promisify(RNFSManager.pathForBundle);
 var _exists = Promise.promisify(RNFSManager.exists);
 var _rename = Promise.promisify(RNFSManager.rename);
+var _moveFile = Promise.promisify(RNFSManager.moveFile);
 
 var convertError = (err) => {
   if (err.isOperational && err.cause) {
@@ -183,6 +184,11 @@ var RNFS = {
 
   renameFile(filepath, newName) {
     return _rename(filepath, newName)
+      .catch(convertError);
+  },
+
+  moveFile(filepath, newPath) {
+    return _moveFile(filepath, newPath)
       .catch(convertError);
   },
 
