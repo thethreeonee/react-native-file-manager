@@ -51,12 +51,14 @@
     
   [[NSFileManager defaultManager] createFileAtPath:tempPath contents:nil attributes:nil];
 
-  _fileHandle = [NSFileHandle fileHandleForWritingAtPath:_params.toFile];
+  _fileHandle = [NSFileHandle fileHandleForWritingAtPath:tempPath];
 
   if (!_fileHandle) {
-    NSError* error = [NSError errorWithDomain:@"Downloader" code:NSURLErrorFileDoesNotExist userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat: @"Failed to create  target file at path: %@", _params.toFile]}];
+    NSError* error = [NSError errorWithDomain:@"Downloader" code:NSURLErrorFileDoesNotExist userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat: @"Failed to create  target file at path: %@", tempPath]}];
     
-    return _params.errorCallback(error);
+    if (_params.errorCallback) {
+      return _params.errorCallback(error);
+    }
   }
     
   NSHTTPURLResponse* httpUrlResponse = (NSHTTPURLResponse*)response;
