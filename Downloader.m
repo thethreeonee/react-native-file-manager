@@ -62,7 +62,7 @@
   NSHTTPURLResponse* httpUrlResponse = (NSHTTPURLResponse*)response;
 
   _statusCode = [NSNumber numberWithLong:httpUrlResponse.statusCode];
-  _contentLength = [NSNumber numberWithLong: httpUrlResponse.expectedContentLength];
+  _contentLength = [NSNumber numberWithLongLong: httpUrlResponse.expectedContentLength];
   
   return _params.beginCallback(_statusCode, _contentLength, httpUrlResponse.allHeaderFields);
 }
