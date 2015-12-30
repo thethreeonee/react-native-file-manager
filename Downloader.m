@@ -47,8 +47,9 @@
 
 - (void)connection:(NSURLConnection*)connection didReceiveResponse:(NSURLResponse*)response
 {
+  NSString *tempPath = [_params.toFile stringByAppendingPathExtension:@"tmp"];
     
-  [[NSFileManager defaultManager] createFileAtPath:_params.toFile contents:nil attributes:nil];
+  [[NSFileManager defaultManager] createFileAtPath:tempPath contents:nil attributes:nil];
 
   _fileHandle = [NSFileHandle fileHandleForWritingAtPath:_params.toFile];
 
@@ -80,6 +81,14 @@
 - (void)connectionDidFinishLoading:(NSURLConnection*)connection
 {
   [_fileHandle closeFile];
+  
+  NSString *tempPath = [_params.toFile stringByAppendingPathExtension:@"tmp"];
+  
+  NSError *error = nil;
+  if ([[NSFileManager defaultManager] fileExistsAtPath:_params.toFile isDirectory:false]) {
+    [[NSFileManager defaultManager] removeItemAtPath:_params.toFile error:&error];
+  }
+  [[NSFileManager defaultManager] moveItemAtPath:tempPath toPath:_params.toFile error:&error];
 
   return _params.callback(_statusCode, _bytesWritten);
 }
