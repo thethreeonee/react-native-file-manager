@@ -42,6 +42,13 @@
 {
   [_fileHandle closeFile];
 
+  NSString *tempPath = [_params.toFile stringByAppendingPathExtension:@"tmp"];
+  
+  NSError *err = nil;
+  if ([[NSFileManager defaultManager] fileExistsAtPath:tempPath isDirectory:false]) {
+    [[NSFileManager defaultManager] removeItemAtPath:tempPath error:&err];
+  }
+
   return _params.errorCallback(error);
 }
 
