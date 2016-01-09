@@ -213,6 +213,19 @@ RCT_EXPORT_METHOD(exists:(NSString *)filepath
     callback(@[[NSNull null], [NSNumber numberWithBool:exists]]);
 }
 
+RCT_EXPORT_METHOD(folderExists:(NSString *)filepath
+                  callback:(RCTResponseSenderBlock)callback)
+{
+  BOOL isDirectory;
+  BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:filepath isDirectory:&isDirectory];
+  
+  if (exists && isDirectory) {
+    callback(@[[NSNull null], [NSNumber numberWithBool:YES]]);
+  } else {
+    callback(@[[NSNull null], [NSNumber numberWithBool:NO]]);
+  }
+}
+
 RCT_EXPORT_METHOD(rename:(NSString *)filepath
                   to:(NSString *)newname
                   callback:(RCTResponseSenderBlock)callback)

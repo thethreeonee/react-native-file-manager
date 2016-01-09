@@ -23,6 +23,7 @@ var _mkdir = Promise.promisify(RNFSManager.mkdir);
 var _downloadFile = Promise.promisify(RNFSManager.downloadFile);
 var _pathForBundle = Promise.promisify(RNFSManager.pathForBundle);
 var _exists = Promise.promisify(RNFSManager.exists);
+var _folderExists = Promise.promisify(RNFSManager.folderExists);
 var _rename = Promise.promisify(RNFSManager.rename);
 var _moveFile = Promise.promisify(RNFSManager.moveFile);
 
@@ -179,6 +180,11 @@ var RNFS = {
 
   fileExistsAtPath(filepath) {
     return _exists(filepath)
+      .catch(convertError);
+  },
+
+  folderExistsAtPath(path) {
+    return _folderExists(path)
       .catch(convertError);
   },
 
