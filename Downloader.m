@@ -41,7 +41,7 @@
 - (void)connection:(NSURLConnection*)connection didFailWithError:(NSError*)error
 {
   [_fileHandle closeFile];
-
+  
   NSString *tempPath = [_params.toFile stringByAppendingPathExtension:@"tmp"];
   
   NSError *err = nil;
@@ -98,8 +98,10 @@
     [[NSFileManager defaultManager] removeItemAtPath:_params.toFile error:&error];
   }
   [[NSFileManager defaultManager] moveItemAtPath:tempPath toPath:_params.toFile error:&error];
-
-  return _params.callback(_statusCode, _bytesWritten);
+  
+  NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:_params.toFile error:&error];
+  
+  return _params.callback(_statusCode, [fileAttributes valueForKey:@"NSFileSize"]);
 }
 
 - (void)stopDownload
