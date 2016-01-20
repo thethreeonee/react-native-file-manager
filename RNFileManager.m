@@ -297,6 +297,7 @@ RCT_EXPORT_METHOD(pathForBundle:(NSString *)bundleNamed
     @"MainBundlePath": [[NSBundle mainBundle] bundlePath],
     @"NSCachesDirectoryPath": [self getPathForDirectory:NSCachesDirectory],
     @"NSDocumentDirectoryPath": [self getPathForDirectory:NSDocumentDirectory],
+    @"NSApplicationSupportDirectoryPath": [self getPathForDirectory:NSApplicationSupportDirectory],
     @"NSFileTypeRegular": NSFileTypeRegular,
     @"NSFileTypeDirectory": NSFileTypeDirectory
   };
