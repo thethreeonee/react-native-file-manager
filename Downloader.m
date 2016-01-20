@@ -57,6 +57,7 @@
   NSString *tempPath = [_params.toFile stringByAppendingPathExtension:@"tmp"];
     
   [[NSFileManager defaultManager] createFileAtPath:tempPath contents:nil attributes:nil];
+  [[NSURL URLWithString:tempPath] setResourceValue:@YES forKey:NSURLIsExcludedFromBackupKey error:nil];
 
   _fileHandle = [NSFileHandle fileHandleForWritingAtPath:tempPath];
 
@@ -98,6 +99,7 @@
     [[NSFileManager defaultManager] removeItemAtPath:_params.toFile error:&error];
   }
   [[NSFileManager defaultManager] moveItemAtPath:tempPath toPath:_params.toFile error:&error];
+  [[NSURL URLWithString:_params.toFile] setResourceValue:@YES forKey:NSURLIsExcludedFromBackupKey error:nil];
   
   NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:_params.toFile error:&error];
   
